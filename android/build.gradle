@@ -15,6 +15,12 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
+    def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+    // Check AGP version for backward compatibility w/react-native versions still on gradle plugin 6
+    if (agpVersion.tokenize('.')[0].toInteger() >= 7) {
+        namespace = "px.tooltips"
+    }
+
     compileSdkVersion 29
     buildToolsVersion '29.0.2'
 
